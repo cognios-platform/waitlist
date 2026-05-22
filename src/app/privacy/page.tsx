@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        url: "https://waitlist.cognios.io/images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Cognios preview",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
       "Privacy information for Cognios's pre-launch website and waitlist.",
     images: [
       {
-        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        url: "https://waitlist.cognios.io/images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Cognios preview",
@@ -81,20 +81,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>2. Data Controller</h3>
-            <p>The data controller responsible for your personal data is:</p>
-            <p>
-              <strong>Cognios OÜ</strong>
-              <br />
-              Estonia
-              <br />
-              Email:{" "}
-              <a href="mailto:support@cognios.io">support@cognios.io</a>
-            </p>
-          </section>
-
-          <section>
-            <h3>3. Information We Collect</h3>
+            <h3>2. Information We Collect</h3>
             <p>
               During the pre-launch phase, we collect only the information you
               voluntarily provide, which may include:
@@ -113,7 +100,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>4. How We Use Your Data</h3>
+            <h3>3. How We Use Your Data</h3>
             <p>We use your personal data to:</p>
             <ul>
               <li>Manage the early access waitlist</li>
@@ -125,7 +112,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>5. Legal Basis for Processing</h3>
+            <h3>4. Legal Basis for Processing</h3>
             <p>We process your data based on:</p>
             <ul>
               <li>Your consent when submitting forms</li>
@@ -138,7 +125,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>6. Data Storage and Retention</h3>
+            <h3>5. Data Storage and Retention</h3>
             <p>
               Your data is stored securely and retained only as long as
               necessary for the purposes described above.
@@ -147,7 +134,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>7. Data Sharing</h3>
+            <h3>6. Data Sharing</h3>
             <p>
               We do not sell personal data. We may use trusted hosting or
               infrastructure providers to store data securely. We do not share
@@ -156,7 +143,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>8. Your Rights Under GDPR</h3>
+            <h3>7. Your Rights Under GDPR</h3>
             <p>Under GDPR, you have the right to:</p>
             <ul>
               <li>Access your personal data</li>
@@ -169,7 +156,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>9. Security</h3>
+            <h3>8. Security</h3>
             <p>
               We implement reasonable technical and organizational measures to
               protect personal data. However, no system can guarantee absolute
@@ -178,7 +165,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>10. Changes to This Policy</h3>
+            <h3>9. Changes to This Policy</h3>
             <p>
               We may update this Privacy Policy as Cognios evolves from
               pre-launch to full platform. The latest version will always be
@@ -187,7 +174,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h3>11. Contact</h3>
+            <h3>10. Contact</h3>
             <p>
               If you have questions about this Privacy Policy or wish to
               exercise your data protection rights, you may contact us at{" "}

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        url: "https://waitlist.cognios.io/images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Cognios preview",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     description: "Website terms for Cognios during its pre-launch phase.",
     images: [
       {
-        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        url: "https://waitlist.cognios.io/images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Cognios preview",
@@ -137,14 +137,7 @@ export default function TermsPolicyPage() {
           </section>
 
           <section>
-            <h3>7. Governing Law</h3>
-            <p>
-              These Terms are governed by the laws of the Republic of Estonia.
-            </p>
-          </section>
-
-          <section>
-            <h3>15. Contact</h3>
+            <h3>7. Contact</h3>
             <p>
               For questions regarding these Terms, please contact:
               <br />

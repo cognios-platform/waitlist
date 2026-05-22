@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        url: "https://waitlist.cognios.io/images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Cognios preview",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Contact Cognios for questions, feedback, or legal inquiries related to the platform and agentic tutors.",
     images: [
       {
-        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        url: "https://waitlist.cognios.io/images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Cognios preview",
