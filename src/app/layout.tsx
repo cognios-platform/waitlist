@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Agentic Tutors for Crypto & AI Learning · Cognios",
+    title: "Agentic Powered Tutors · Cognios",
     description:
       "Cognios turns creator expertise into agentic tutors that adapt to each learner. Buy tokens to learn, evolve with your tutor, and earn on-chain digital assets at milestones. Join the waitlist.",
     url: "https://waitlist.cognios.io/",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Agentic Tutors for Crypto & AI Learning · Cognios",
+    title: "Agentic Powered Tutors · Cognios",
     description:
       "Cognios turns creator expertise into agentic tutors that adapt to each learner. Buy tokens to learn, evolve with your tutor, and earn on-chain digital assets at milestones. Join the waitlist.",
     images: ["https://waitlist.cognios.io/images/opengraph-image.png"],
