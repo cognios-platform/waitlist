@@ -48,7 +48,7 @@ export default function ContactPage() {
       description: "Questions, feedback, or help with Cognios",
     },
     {
-      label: "Legal & DMCA",
+      label: "Legal",
       icon: FileText,
       email: "legal@cognios.io",
       description: "Copyright notices, legal inquiries, and compliance matters",
