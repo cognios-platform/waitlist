@@ -10,6 +10,7 @@ import Checkbox from "./Checkbox";
 import Button from "./Button";
 import { toast } from "react-toastify";
 import Select from "./Select";
+import { XIcon } from "lucide-react";
 
 export type TabType = "learner" | "creator";
 
@@ -17,9 +18,6 @@ export const TABS: { id: TabType; label: string }[] = [
   { id: "learner", label: "I want to learn with agentic tutors" },
   { id: "creator", label: "I want to build and publish agents" },
 ];
-
-const CELEBRATION_VISIBLE_MS = 4400;
-const CELEBRATION_FADE_MS = 450;
 
 export default function EmailCapture({
   activeTab,
@@ -40,22 +38,6 @@ export default function EmailCapture({
   const [showCelebration, setShowCelebration] = useState(false);
   const [celebrationExiting, setCelebrationExiting] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!showCelebration) return;
-    const fadeTimer = window.setTimeout(
-      () => setCelebrationExiting(true),
-      CELEBRATION_VISIBLE_MS,
-    );
-    const hideTimer = window.setTimeout(() => {
-      setShowCelebration(false);
-      setCelebrationExiting(false);
-    }, CELEBRATION_VISIBLE_MS + CELEBRATION_FADE_MS);
-    return () => {
-      window.clearTimeout(fadeTimer);
-      window.clearTimeout(hideTimer);
-    };
-  }, [showCelebration]);
 
   useEffect(() => {
     if (!showCelebration) return;
@@ -136,6 +118,12 @@ export default function EmailCapture({
                   celebrationExiting ? styles.celebrationCardExit : ""
                 }`}
               >
+                <button
+                  onClick={() => setShowCelebration(false)}
+                  className={styles.celebrationCloseButton}
+                >
+                  <XIcon className={styles.celebrationClose} size={36} />
+                </button>
                 <Image
                   className={styles.celebrationGif}
                   src="/ai_tutor.png"

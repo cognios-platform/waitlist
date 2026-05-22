@@ -97,7 +97,6 @@
   display: block;
   width: 100%;
   height: auto;
-  margin: 0 auto 14px;
   border-radius: 12px;
   object-fit: cover;
 }
@@ -183,5 +182,27 @@
     color: $color-muted;
     text-align: center;
     margin: 0;
+  }
+}
+
+.celebrationCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba($color-accent, 0.85);
+  border-radius: 50%;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba($color-accent, 0.95);
   }
 }
