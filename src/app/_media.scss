@@ -1,0 +1,63 @@
+$megaDesktop: "screen and (max-width: 1920px)";
+$bigDesktop: "screen and (max-width: 1536px)";
+$midDesktop: "screen and (max-width: 1370px)";
+$desktop: "screen and (max-width: 1200px)";
+$bigTablet: "screen and (max-width: 992px)";
+$tablet: " screen and (max-width: 768px)";
+$mobile: "screen and (max-width: 576px)";
+$smallMobile: "screen and (max-width: 480px)";
+$reallySmallMobile: "screen and (max-width: 400px)";
+
+@mixin megaDesktop {
+  @media #{$megaDesktop} {
+    @content;
+  }
+}
+
+@mixin bigDesktop {
+  @media #{$bigDesktop} {
+    @content;
+  }
+}
+
+@mixin midDesktop {
+  @media #{$midDesktop} {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media #{$desktop} {
+    @content;
+  }
+}
+
+@mixin bigTablet {
+  @media #{$bigTablet} {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media #{$tablet} {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media #{$mobile} {
+    @content;
+  }
+}
+
+@mixin smallMobile {
+  @media #{$smallMobile} {
+    @content;
+  }
+}
+
+@mixin reallySmallMobile {
+  @media #{$reallySmallMobile} {
+    @content;
+  }
+}

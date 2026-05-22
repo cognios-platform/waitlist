@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block non-public / internal areas
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+Disallow: /checkout/
+Disallow: /admin/
+

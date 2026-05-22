@@ -1,0 +1,388 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  color: $color-text;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+
+  .required {
+    color: $color-error;
+    margin-left: 2px;
+  }
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: $border-1px-solid;
+  border-radius: 8px;
+  background: $color-card-bg;
+  transition: all 0.2s ease;
+
+  &:focus-within {
+    outline: none;
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px $color-accent-01;
+  }
+
+  &.open {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px $color-accent-01;
+  }
+
+  &.error {
+    border-color: $color-error;
+
+    &:focus-within {
+      border-color: $color-error;
+      box-shadow: 0 0 0 3px $color-error-bg;
+    }
+  }
+
+  &.disabled {
+    background: $color-accent-01;
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .select {
+      cursor: not-allowed;
+    }
+
+    .chevron {
+      opacity: 0.5;
+    }
+  }
+
+  // Size variants
+  &.small {
+    .select {
+      padding: 6px 32px 6px 12px;
+      font-size: 13px;
+    }
+
+    .chevron {
+      right: 10px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &.medium {
+    .select {
+      padding: 8px 36px 8px 16px;
+      font-size: 14px;
+    }
+
+    .chevron {
+      right: 12px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &.large {
+    .select {
+      padding: 12px 40px 12px 20px;
+      font-size: 16px;
+    }
+
+    .chevron {
+      right: 16px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // Variant styles
+  &.outlined {
+    border-width: 2px;
+  }
+
+  &.filled {
+    background: $color-accent-01;
+    border-color: transparent;
+
+    &:focus-within {
+      background: $color-card-bg;
+      border-color: $color-accent;
+    }
+
+    &.error {
+      background: $color-error-bg;
+      border-color: $color-error;
+    }
+  }
+}
+
+.select {
+  flex: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  color: $color-text;
+  transition: all 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: $color-text-secondary;
+  }
+
+  option {
+    background: $color-card-bg;
+    color: $color-text;
+    padding: 8px;
+  }
+
+  option:disabled {
+    color: $color-muted;
+    font-style: italic;
+  }
+}
+
+.chevron {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: $color-muted;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+
+  .selectWrapper:focus-within &,
+  &.chevronOpen {
+    transform: rotate(180deg);
+  }
+}
+
+// Searchable dropdown styles
+.selectButton {
+  flex: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  color: $color-text;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-align: left;
+  padding: 8px 36px 8px 16px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  &:disabled {
+    cursor: not-allowed;
+    color: $color-text-secondary;
+  }
+
+  .selectWrapper.small & {
+    padding: 6px 32px 6px 12px;
+    font-size: 13px;
+  }
+
+  .selectWrapper.large & {
+    padding: 12px 40px 12px 20px;
+    font-size: 16px;
+  }
+}
+
+.selectButtonText {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: inherit;
+
+  &:empty::before {
+    content: attr(data-placeholder);
+    color: $color-muted;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: $color-card-bg;
+  border: $border-2px-solid;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px $color-accent-02;
+  z-index: 1000;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.searchContainer {
+  position: relative;
+  padding: 12px;
+  border-bottom: $border-1px-solid;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchIcon {
+  color: $color-muted;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  color: $color-text;
+  padding: 4px 0;
+
+  &::placeholder {
+    color: $color-muted;
+  }
+}
+
+.clearSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: $color-muted;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background: $color-accent-01;
+    color: $color-text;
+  }
+}
+
+.optionsList {
+  max-height: 240px;
+  // overflow-y: auto;
+  padding: 4px 0;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $color-accent-01;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color-border;
+    border-radius: 3px;
+
+    &:hover {
+      background: $color-muted;
+    }
+  }
+}
+
+.option {
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  color: $color-text;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: block;
+
+  &:hover:not(.optionDisabled) {
+    background: $color-accent-01;
+    color: $color-accent;
+  }
+
+  &.optionSelected {
+    background: $color-accent-01;
+    color: $color-accent;
+    font-weight: 600;
+  }
+
+  &.optionDisabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    font-style: italic;
+  }
+
+  .selectWrapper.small & {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .selectWrapper.large & {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+
+.noResults {
+  padding: 16px;
+  text-align: center;
+  color: $color-muted;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.footerText {
+  font-size: 12px;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.hintText {
+  color: $color-muted;
+}
+
+.errorText {
+  color: $color-error;
+  font-weight: 500;
+}

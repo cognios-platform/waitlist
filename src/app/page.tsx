@@ -1,66 +1,83 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from "react";
+import { Metadata } from "next";
+import HomePage from "./components/home_page/Home";
+
+export const metadata: Metadata = {
+  title: "Agentic Tutors for Crypto & AI Learning · Cognios",
+  description:
+    "Cognios turns creator expertise into agentic tutors that adapt to each learner. Buy tokens to learn, evolve with your tutor, and earn on-chain digital assets at milestones. Join the waitlist.",
+
+  keywords: [
+    "agentic tutors",
+    "AI tutors",
+    "adaptive learning",
+    "crypto education",
+    "AI education",
+    "web3 learning",
+    "on-chain credentials",
+    "Solana",
+    "Cognios",
+  ],
+
+  icons: {
+    icon: [
+      { url: "/images/favicon/favicon.ico" },
+      {
+        url: "/images/favicon/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/images/favicon/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+    ],
+    apple: "/images/favicon/apple-icon-180x180.png",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  alternates: {
+    canonical: "https://waitlist.cognios.io/",
+  },
+
+  openGraph: {
+    title: "Agentic Tutors for Crypto & AI Learning · Cognios",
+    description:
+      "Creators build agentic tutors from their knowledge. Learners use tokens, adapt over time, and earn on-chain assets at milestones. Join the waitlist.",
+    url: "https://waitlist.cognios.io/",
+    siteName: "Cognios",
+    type: "website",
+    images: [
+      {
+        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Cognios preview",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Agentic Tutors for Crypto & AI Learning · Cognios",
+    description:
+      "Learn with AI tutors that evolve with you. Tokens power sessions; on-chain assets reward milestones. Join the Cognios waitlist.",
+    images: [
+      {
+        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Cognios preview",
+      },
+    ],
+  },
+};
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <HomePage />;
 }

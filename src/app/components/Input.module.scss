@@ -1,0 +1,287 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  color: $color-text;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+
+  .required {
+    color: $color-error;
+    margin-left: 2px;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: $border-1px-solid;
+  border-radius: 8px;
+  background: $color-card-bg;
+  transition: all 0.2s ease;
+
+  &:focus-within {
+    outline: none;
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px $color-accent-01;
+  }
+
+  &.error {
+    border-color: $color-error;
+
+    &:focus-within {
+      border-color: $color-error;
+      box-shadow: 0 0 0 3px $color-error-bg;
+    }
+  }
+
+  &.disabled {
+    background: $color-accent-01;
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .input {
+      cursor: not-allowed;
+    }
+  }
+
+  // Size variants
+  &.small {
+    .input {
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+
+    .leftIcon,
+    .rightIcon {
+      font-size: 14px;
+    }
+
+    &.withLeftIcon .input {
+      padding-left: 36px;
+    }
+
+    &.withRightIcon .input {
+      padding-right: 36px;
+    }
+  }
+
+  &.medium {
+    .input {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .leftIcon,
+    .rightIcon {
+      font-size: 16px;
+    }
+
+    &.withLeftIcon .input {
+      padding-left: 40px;
+    }
+
+    &.withRightIcon .input {
+      padding-right: 40px;
+    }
+  }
+
+  &.large {
+    .input {
+      padding: 12px 20px;
+      font-size: 16px;
+    }
+
+    .leftIcon,
+    .rightIcon {
+      font-size: 18px;
+    }
+
+    &.withLeftIcon .input {
+      padding-left: 48px;
+    }
+
+    &.withRightIcon .input {
+      padding-right: 48px;
+    }
+  }
+
+  // Variant styles
+  &.outlined {
+    border-width: 2px;
+  }
+
+  &.filled {
+    background: $color-accent-01;
+    border-color: transparent;
+
+    &:focus-within {
+      background: $color-card-bg;
+      border-color: $color-accent;
+    }
+
+    &.error {
+      background: $color-error-bg;
+      border-color: $color-error;
+    }
+  }
+}
+
+.input {
+  flex: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  color: $color-text;
+  transition: all 0.2s ease;
+
+  &::placeholder {
+    color: $color-muted;
+    opacity: 0.6;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: $color-text-secondary;
+  }
+
+  // Remove number input spinners
+  &[type="number"] {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+.leftIcon,
+.rightIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-muted;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.leftIcon {
+  position: absolute;
+  left: 12px;
+  z-index: 1;
+}
+
+.rightIcon {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+}
+
+// Make right icon clickable when needed
+.inputWrapper.rightIconClickable {
+  .rightIcon {
+    pointer-events: auto;
+    cursor: pointer;
+
+    // If it's a button, style it appropriately
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $color-text;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 4px;
+  gap: 8px;
+}
+
+.footerText {
+  font-size: 12px;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.hintText {
+  color: $color-muted;
+}
+
+.errorText {
+  color: $color-error;
+  font-weight: 500;
+}
+
+.counter {
+  font-size: 12px;
+  color: $color-muted;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  
+  &.counterWarning {
+    color: $color-warning;
+  }
+  
+  &.counterError {
+    color: $color-error;
+    font-weight: 500;
+  }
+}
+
+// Small size icon adjustments
+.inputWrapper.small {
+  .leftIcon {
+    left: 10px;
+  }
+
+  .rightIcon {
+    right: 10px;
+  }
+}
+
+// Large size icon adjustments
+.inputWrapper.large {
+  .leftIcon {
+    left: 16px;
+  }
+
+  .rightIcon {
+    right: 16px;
+  }
+}

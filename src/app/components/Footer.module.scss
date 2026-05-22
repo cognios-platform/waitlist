@@ -1,0 +1,127 @@
+.logo {
+  margin-bottom: 30px;
+}
+
+.footer {
+  background: $footer-bg;
+  color: $color-white;
+  padding: 30px 20px 0 20px;
+
+  a {
+    color: $color-muted;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 14px;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  .footerTop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 48px;
+    margin-bottom: 50px;
+  }
+
+  .logoArea {
+    flex: 1 1 280px;
+
+    h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: $footer-text-primary;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: $footer-text-secondary;
+      max-width: 320px;
+      font-size: 16px;
+    }
+  }
+
+  .footerLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 64px;
+    flex: 2 1 500px;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: $footer-text-primary;
+      margin-bottom: 12px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .footerBottom {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    border-top: $border-1px-solid;
+    border-color: $color-muted;
+    padding: 20px 0;
+    margin: 20px auto 0;
+
+    p {
+      color: $footer-text-muted;
+      font-size: 14.4px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 20px;
+
+      @include mobile {
+        margin: 0 auto;
+      }
+
+      a {
+        display: flex;
+        color: $footer-text-secondary;
+        font-size: 22px;
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+.trustLine {
+  font-size: 14px;
+  color: $footer-text-muted;
+
+  @include mobile {
+    text-align: right;
+  }
+
+  a {
+    color: $footer-text-muted;
+  }
+}

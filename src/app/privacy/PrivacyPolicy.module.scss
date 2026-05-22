@@ -1,0 +1,77 @@
+.content {
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  line-height: 1.8;
+
+  section {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 32px;
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: 16px;
+    margin-top: 32px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    @include mobile {
+      font-size: 18px;
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+  }
+
+  p {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul,
+  ol {
+    margin: 16px 0;
+    padding-left: 24px;
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.7;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+    color: $color-text;
+  }
+}

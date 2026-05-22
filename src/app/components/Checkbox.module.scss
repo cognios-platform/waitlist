@@ -1,0 +1,274 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.labelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+
+  &.labelLeft {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .container.disabled & {
+    cursor: not-allowed;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+  z-index: 1;
+  top: 0;
+  left: 0;
+
+  // Match the size of the indicator
+  width: 20px;
+  height: 20px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus-visible + .checkboxIndicator {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+
+  // Size variants - match indicator sizes
+  &.small {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.medium {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.large {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.checkboxIndicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: $border-2px-solid;
+  background: $color-card-bg;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  // Size variants
+  &.small {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+
+    .checkIcon {
+      width: 10px;
+      height: 10px;
+    }
+
+    .indeterminateLine {
+      width: 8px;
+      height: 2px;
+    }
+  }
+
+  &.medium {
+    width: 20px;
+    height: 20px;
+
+    .checkIcon {
+      width: 14px;
+      height: 14px;
+    }
+
+    .indeterminateLine {
+      width: 10px;
+      height: 2px;
+    }
+  }
+
+  &.large {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+
+    .checkIcon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .indeterminateLine {
+      width: 12px;
+      height: 2.5px;
+    }
+  }
+
+  // Checked state
+  &.checked {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: $color-white;
+  }
+
+  // Indeterminate state
+  &.indeterminate {
+    background: $color-accent;
+    border-color: $color-accent;
+  }
+
+  // Disabled state
+  &.disabled {
+    background: $color-bg;
+    border-color: $color-border;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // Error state - applied via parent container
+  .container.error & {
+    border-color: $color-error;
+  }
+}
+
+// Error state for checked checkbox
+.container.error {
+  .checkbox:checked + .checkboxIndicator {
+    background: $color-error;
+    border-color: $color-error;
+  }
+}
+
+.checkIcon {
+  color: $color-white;
+  stroke-width: 3;
+}
+
+.indeterminateLine {
+  background: $color-card-bg;
+  border-radius: 1px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-text;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.4;
+
+  @include mobile {
+    display: block;
+  }
+
+  .required {
+    color: $color-error;
+    margin-left: 2px;
+  }
+
+  .container.disabled & {
+    cursor: not-allowed;
+  }
+}
+
+.description {
+  font-size: 12px;
+  color: $color-text-secondary;
+  line-height: 1.4;
+  margin-top: -4px;
+}
+
+.footerText {
+  font-size: 12px;
+  margin-left: 32px;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.hintText {
+  color: $color-muted;
+}
+
+.errorText {
+  color: $color-error;
+  font-weight: 500;
+}
+
+// Adjustments for label on left
+.checkboxWrapper.labelLeft {
+  .description,
+  .footerText {
+    margin-left: 0;
+    margin-right: 32px;
+  }
+}
+
+// Small size adjustments
+.container.small {
+  .description,
+  .footerText {
+    margin-left: 28px;
+  }
+
+  .checkboxWrapper.labelLeft {
+    .description,
+    .footerText {
+      margin-left: 0;
+      margin-right: 28px;
+    }
+  }
+}
+
+// Large size adjustments
+.container.large {
+  .description,
+  .footerText {
+    margin-left: 36px;
+  }
+
+  .checkboxWrapper.labelLeft {
+    .description,
+    .footerText {
+      margin-left: 0;
+      margin-right: 36px;
+    }
+  }
+}
