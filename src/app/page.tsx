@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        url: "https://waitlist.cognios.io/images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Cognios preview",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
       "Cognios turns creator expertise into agentic tutors that adapt to each learner. Buy tokens to learn, evolve with your tutor, and earn on-chain digital assets at milestones. Join the waitlist.",
     images: [
       {
-        url: "https://waitlist.cognios.io/images/favicon/OG-image.png",
+        url: "https://waitlist.cognios.io/images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Cognios preview",
