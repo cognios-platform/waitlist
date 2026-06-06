@@ -9,8 +9,21 @@ import Link from "next/link";
 import Checkbox from "./Checkbox";
 import Button from "./Button";
 import { toast } from "react-toastify";
-import Select from "./Select";
 import { XIcon } from "lucide-react";
+
+const CATEGORY_MAX_LENGTH = 80;
+
+function sanitizeCategoryInput(value: string): string {
+  return value.replace(/[<>{}\/\\]/g, "").slice(0, CATEGORY_MAX_LENGTH);
+}
+
+function validateCategory(value: string): boolean | null {
+  const trimmed = value.trim();
+  if (trimmed.length === 0) return null;
+  if (trimmed.length < 2 || trimmed.length > CATEGORY_MAX_LENGTH) return false;
+  if (/javascript:|data:|on\w+=/i.test(trimmed)) return false;
+  return /^[\p{L}\p{N}\s&.,'-]+$/u.test(trimmed);
+}
 
 export type TabType = "learner" | "creator";
 
@@ -29,11 +42,12 @@ export default function EmailCapture({
   const [formData, setFormData] = useState({
     email: "",
     consent: false,
-    category: "crypto",
+    category: "",
     link: "",
   });
 
   const [emailValid, setEmailValid] = useState<boolean | null>(null);
+  const [categoryValid, setCategoryValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
   const [celebrationExiting, setCelebrationExiting] = useState(false);
@@ -49,7 +63,13 @@ export default function EmailCapture({
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!formData.email.trim() || !formData.consent || emailValid === false)
+    if (
+      !formData.email.trim() ||
+      !formData.category.trim() ||
+      !formData.consent ||
+      emailValid === false ||
+      categoryValid === false
+    )
       return;
 
     setIsLoading(true);
@@ -59,7 +79,10 @@ export default function EmailCapture({
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            ...formData,
+            category: formData.category.trim(),
+          }),
         },
       );
       console.log("Learner signup response received", res);
@@ -79,10 +102,11 @@ export default function EmailCapture({
       setFormData({
         email: "",
         consent: false,
-        category: "crypto",
+        category: "",
         link: "",
       });
       setEmailValid(null);
+      setCategoryValid(null);
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -207,21 +231,26 @@ export default function EmailCapture({
               />
             )}
 
-            <Select
+            <Input
               id="waitlist-category"
+              type="text"
               label="What are you interested in?"
+              placeholder="e.g. AI agents, DeFi, smart contracts"
               value={formData.category}
-              onChange={(e) =>
-                setFormData({ ...formData, category: e.target.value })
-              }
+              onChange={(e) => {
+                const category = sanitizeCategoryInput(e.target.value);
+                setFormData({ ...formData, category });
+                setCategoryValid(validateCategory(category));
+              }}
+              maxLength={CATEGORY_MAX_LENGTH}
+              required
               disabled={isLoading}
-            >
-              <option value="crypto">Crypto & Web3</option>
-              <option value="ai">AI & Machine Learning</option>
-              <option value="smart-contracts">Smart Contracts</option>
-              <option value="agents">Building AI agents</option>
-              <option value="other">Other topics</option>
-            </Select>
+              error={
+                categoryValid === false
+                  ? "Use 2-80 letters, numbers, spaces, or & . , ' - only."
+                  : undefined
+              }
+            />
 
             <Checkbox
               label={
@@ -259,10 +288,12 @@ export default function EmailCapture({
             <Button
               variant="primary"
               size="large"
-              disabled={isLoading || emailValid === false}
+              disabled={
+                isLoading || emailValid === false || categoryValid === false
+              }
               isLoading={isLoading}
             >
-              {activeTab === "learner" ? "Join the Waitlist" : "Build an Agent"}
+              Join the Waitlist
             </Button>
           </form>
         </div>
