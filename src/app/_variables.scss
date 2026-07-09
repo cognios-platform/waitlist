@@ -1,12 +1,12 @@
 @use "sass:color";
 
-$color-bg: #010101;
+$color-bg: #020713;
 $color-bg-overlay: rgba(0, 0, 0, 0.65);
-$color-card-bg: #1e2736;
+$color-card-bg: rgba(9, 21, 39, 0.88);
 
-$color-bg-subtle: #232d3d;
-$color-bg-hover: #232d3d;
-$color-surface-dark: #051417;
+$color-bg-subtle: #071525;
+$color-bg-hover: #0d1d34;
+$color-surface-dark: rgba(7, 17, 32, 0.68);
 
 $color-white: #ffffff;
 $color-white-01: rgba(255, 255, 255, 0.06);
@@ -40,7 +40,10 @@ $color-info: #38bdf8;
 $color-info-bg: #0f1f2a;
 $color-info-border: #1e3a5f;
 
-$color-border: #394558;
+$color-border: rgba(123, 210, 255, 0.18);
+$color-border-strong: rgba(28, 185, 199, 0.38);
+$color-purple: #8b5cf6;
+$color-pink: #e879f9;
 
 $color-selection-bg: #223357;
 
@@ -76,7 +79,10 @@ $border-2px-dashed-accent: 2px dashed $color-accent;
 
 $border-spinner: 4px solid $color-accent-01;
 
-$footer-bg: linear-gradient(180deg, #0f141b 0%, #0b1016 100%);
+$footer-bg:
+  radial-gradient(circle at 12% 0%, rgba(28, 185, 199, 0.12), transparent 30rem),
+  radial-gradient(circle at 88% 6%, rgba(139, 92, 246, 0.13), transparent 28rem),
+  linear-gradient(180deg, rgba(3, 9, 20, 0.88), rgba(2, 5, 13, 0.94) 78%);
 
 $footer-text-primary: rgba(255, 255, 255, 0.9);
 $footer-text-secondary: rgba(255, 255, 255, 0.6);

@@ -1,127 +1,198 @@
 .logo {
-  margin-bottom: 30px;
+  margin-bottom: 16px;
 }
 
 .footer {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(28, 185, 199, 0.16);
+  color: $color-text;
   background: $footer-bg;
-  color: $color-white;
-  padding: 30px 20px 0 20px;
+  padding: 48px 24px 0;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background:
+      linear-gradient(rgba(123, 210, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(123, 210, 255, 0.045) 1px, transparent 1px);
+    background-size: 70px 70px;
+    mask-image: linear-gradient(180deg, black, transparent 74%);
+  }
 
   a {
-    color: $color-muted;
+    color: $color-text-secondary;
     text-decoration: none;
     transition: color 0.2s;
-    font-size: 14px;
+    font-size: 0.92rem;
 
-    &:hover {
-      color: $color-white;
-    }
-  }
-
-  .footerTop {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 48px;
-    margin-bottom: 50px;
-  }
-
-  .logoArea {
-    flex: 1 1 280px;
-
-    h3 {
-      font-size: 28px;
-      font-weight: 800;
-      color: $footer-text-primary;
-      margin-bottom: 12px;
-    }
-
-    p {
-      color: $footer-text-secondary;
-      max-width: 320px;
-      font-size: 16px;
-    }
-  }
-
-  .footerLinks {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 64px;
-    flex: 2 1 500px;
-
-    @include mobile {
-      flex-direction: column;
-      gap: 18px;
-      margin-bottom: 40px;
-    }
-
-    h4 {
-      font-size: 16px;
-      font-weight: 700;
-      color: $footer-text-primary;
-      margin-bottom: 12px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      li {
-        margin-bottom: 4px;
-      }
-    }
-  }
-
-  .footerBottom {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 24px;
-    border-top: $border-1px-solid;
-    border-color: $color-muted;
-    padding: 20px 0;
-    margin: 20px auto 0;
-
-    p {
-      color: $footer-text-muted;
-      font-size: 14.4px;
-    }
-
-    .socials {
-      display: flex;
-      gap: 20px;
-
-      @include mobile {
-        margin: 0 auto;
-      }
-
-      a {
-        display: flex;
-        color: $footer-text-secondary;
-        font-size: 22px;
-        transition: transform 0.2s;
-
-        &:hover {
-          transform: translateY(-2px);
-        }
-      }
+    &:hover,
+    &:focus-visible {
+      color: $color-accent-light;
+      outline: none;
     }
   }
 }
 
-.trustLine {
-  font-size: 14px;
-  color: $footer-text-muted;
+.footerTop,
+.footerBottom {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+}
 
-  @include mobile {
-    text-align: right;
+.footerTop {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.4fr) minmax(220px, 0.8fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+  margin-bottom: 40px;
+
+  @include tablet {
+    grid-template-columns: 1fr;
   }
+}
+
+.brandArea {
+  p {
+    max-width: 330px;
+    margin: 0;
+    color: $color-text-secondary;
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  @include tablet {
+    text-align: center;
+
+    p {
+      margin-inline: auto;
+    }
+
+    .logo {
+      justify-content: center;
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
 
   a {
-    color: $footer-text-muted;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 999px;
+    color: $color-text-secondary;
+    background: rgba(255, 255, 255, 0.04);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      background 180ms ease;
+
+    &:hover,
+    &:focus-visible {
+      border-color: rgba(28, 185, 199, 0.38);
+      color: $color-accent;
+      background: rgba(28, 185, 199, 0.1);
+      transform: translateY(-2px);
+      outline: none;
+    }
   }
+
+  @include tablet {
+    justify-content: center;
+  }
+}
+
+.footerLinks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.5vw, 34px);
+
+  @include tablet {
+    text-align: center;
+  }
+}
+
+.footerColumn {
+  h4 {
+    margin: 0 0 12px;
+    color: $color-text;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.securityCard {
+  padding: 22px;
+  border: 1px solid rgba(28, 185, 199, 0.2);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent),
+    rgba(7, 17, 32, 0.72);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(16px);
+
+  h4 {
+    margin: 0 0 10px;
+    color: $color-text;
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0;
+    color: $color-text-secondary;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  @include tablet {
+    text-align: center;
+  }
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  padding: 20px 0 28px;
+
+  p {
+    margin: 0;
+    color: $footer-text-muted;
+    font-size: 0.86rem;
+  }
+
+  @include tablet {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.infrastructureLine {
+  max-width: 420px;
+  line-height: 1.5;
 }

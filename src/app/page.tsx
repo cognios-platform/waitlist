@@ -3,19 +3,18 @@ import { Metadata } from "next";
 import HomePage from "./components/home_page/Home";
 
 export const metadata: Metadata = {
-  title: "Agentic Powered Tutors · Cognios",
+  title: "Cognios - Agentic Tutors Built From Real Expertise",
   description:
-    "Cognios turns creator expertise into agentic tutors that adapt to each learner. Buy tokens to learn, evolve with your tutor, and earn on-chain digital assets at milestones. Join the waitlist.",
+    "Join the Cognios waitlist. Creators turn their expertise into adaptive AI tutors, and learners progress through personalized guidance and verifiable milestones.",
 
   keywords: [
     "agentic tutors",
     "AI tutors",
     "adaptive learning",
-    "crypto education",
-    "AI education",
-    "web3 learning",
-    "on-chain credentials",
-    "Solana",
+    "expert knowledge",
+    "personalized learning",
+    "mastery checkpoints",
+    "verifiable achievements",
     "Cognios",
   ],
 
@@ -46,9 +45,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Agentic Powered Tutors · Cognios",
+    title: "Cognios - Agentic Tutors Built From Real Expertise",
     description:
-      "Creators build agentic tutors from their knowledge. Learners use tokens, adapt over time, and earn on-chain assets at milestones. Join the waitlist.",
+      "Join the Cognios waitlist. Creators turn their expertise into adaptive AI tutors, and learners progress through personalized guidance and verifiable milestones.",
     url: "https://waitlist.cognios.io/",
     siteName: "Cognios",
     type: "website",
@@ -64,9 +63,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Agentic Powered Tutors · Cognios",
+    title: "Cognios - Agentic Tutors Built From Real Expertise",
     description:
-      "Cognios turns creator expertise into agentic tutors that adapt to each learner. Buy tokens to learn, evolve with your tutor, and earn on-chain digital assets at milestones. Join the waitlist.",
+      "Join the Cognios waitlist. Creators turn their expertise into adaptive AI tutors, and learners progress through personalized guidance and verifiable milestones.",
     images: [
       {
         url: "https://waitlist.cognios.io/images/opengraph-image.png",

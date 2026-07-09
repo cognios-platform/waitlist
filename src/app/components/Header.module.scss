@@ -38,8 +38,14 @@
 
 .logoTextWhite,
 .logoTextAccent {
-  font-family: var(--font-space-grotesk), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  font-family:
+    var(--font-space-grotesk),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Helvetica Neue",
+    sans-serif;
   font-weight: 800;
   letter-spacing: -0.02em;
   font-size: clamp(22px, 3vw, 32px);
@@ -54,8 +60,14 @@
 }
 
 .logoText {
-  font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  font-family:
+    var(--font-manrope),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Helvetica Neue",
+    sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -64,22 +76,52 @@
 }
 
 .header {
-  background: $color-bg;
-  border-bottom: $border-1px-solid;
+  --nav-height: 68px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  isolation: isolate;
+  border-bottom: 1px solid rgba(28, 185, 199, 0.18);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(28, 185, 199, 0.1), transparent 34%),
+    radial-gradient(circle at 82% 0%, rgba(139, 92, 246, 0.11), transparent 32%),
+    rgba(2, 7, 19, 0.78);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.28),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  color: $color-text;
   font-size: 14px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 8px $color-accent-01;
+  backdrop-filter: blur(20px);
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(28, 185, 199, 0.5),
+      rgba(139, 92, 246, 0.36),
+      transparent
+    );
+    opacity: 0.72;
+  }
 
   .inner {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    padding: 10px 20px 10px 20px;
+    grid-template-columns: minmax(160px, 1fr) minmax(0, auto) minmax(160px, 1fr);
+    align-items: center;
+    gap: 16px;
+    min-height: var(--nav-height);
+    margin: 0 auto;
+    padding: 0 clamp(16px, 3vw, 28px);
 
     @include mobile {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr auto;
     }
   }
 
@@ -87,182 +129,98 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 24px;
-
-    a {
-      color: $color-text;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-      position: relative;
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: $color-accent;
-        transition: width 0.2s;
-      }
-
-      &:hover {
-        color: $color-accent;
-
-        &::after {
-          width: 100%;
-        }
-      }
-    }
+    gap: 6px;
 
     @include mobile {
       display: none;
     }
   }
 
-  .actions,
-  .mobileActions {
+  .navLink {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: $color-text-secondary;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition:
+      color 180ms ease,
+      background 180ms ease;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-text;
+      background: rgba(28, 185, 199, 0.1);
+      outline: none;
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 2px rgba(28, 185, 199, 0.45);
+    }
+  }
+
+  .actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 10px;
 
-    .signInBtn {
+    > :first-child {
       @include mobile {
         display: none;
       }
     }
-
-    .dashboardBtn {
-      background: transparent;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      color: $color-text;
-      padding: 8px 16px;
-      transition: color 0.2s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 8px;
-
-      &:hover {
-        color: $color-accent;
-        background: $color-accent-01;
-      }
-    }
-
-    .logoutBtn {
-      background: transparent;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      color: $color-text;
-      padding: 8px;
-      transition: all 0.2s;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        color: $color-accent;
-        background: $color-accent-01;
-      }
-    }
-
-    .ctaBtn {
-      background: $color-accent;
-      color: $color-white;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 20px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-size: 14px;
-      box-shadow: 0 2px 8px $color-accent-02;
-
-      &:hover {
-        background: color.adjust($color-accent, $lightness: -7%);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px $color-accent-03;
-      }
-
-      &:active {
-        transform: translateY(0);
-      }
-
-      @include mobile {
-        display: none;
-      }
-    }
-
-    .menuBtn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: $color-text;
-
-      @include mobile {
-        display: flex;
-      }
-    }
   }
 
-  .mobileActions {
-    padding-top: 10px;
-  }
-
-  .mobileLogout {
-    background: transparent;
-    border: 2px solid $color-accent;
-    color: $color-accent;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
+  .menuBtn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(12, 24, 42, 0.68);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 14px;
     cursor: pointer;
-    transition: all 0.2s;
-    width: 100%;
-    text-align: center;
-    margin-top: 8px;
+    color: $color-text;
+    transition:
+      border-color 180ms ease,
+      background 180ms ease;
 
-    &:hover {
-      background: $color-accent;
-      color: $color-white;
+    &:hover,
+    &:focus-visible {
+      border-color: rgba(28, 185, 199, 0.38);
+      background: rgba(28, 185, 199, 0.1);
+      outline: none;
+    }
+
+    @include mobile {
+      display: flex;
     }
   }
 
   .mobileNav {
     display: flex;
     flex-direction: column;
-    background: $color-card-bg;
-    border-top: $border-1px-solid;
-    padding: 14px;
-    gap: 6px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 8px $color-accent-05;
+    gap: 8px;
+    padding: 14px 16px 18px;
+    border-top: 1px solid rgba(28, 185, 199, 0.14);
+    background:
+      radial-gradient(
+        circle at 18% 0%,
+        rgba(28, 185, 199, 0.14),
+        transparent 34%
+      ),
+      rgba(2, 7, 19, 0.97);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 
-    a {
-      color: $color-text;
-      text-decoration: none;
-      font-weight: 500;
-      border: $border-1px-solid;
-      border-radius: 8px;
-      padding: 12px;
-      transition: all 0.2s;
-
-      &:hover {
-        color: $color-accent;
-      }
+    > * {
+      width: 100%;
+      justify-content: center;
     }
   }
 }

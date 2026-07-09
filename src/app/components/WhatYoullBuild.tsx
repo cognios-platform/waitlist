@@ -1,62 +1,128 @@
 "use client";
 
 import React from "react";
+import {
+  BookOpenCheck,
+  GraduationCap,
+  Sparkles,
+  UploadCloud,
+  UserRound,
+} from "lucide-react";
 import styles from "../Home.module.scss";
-import { Bot, Cpu } from "lucide-react";
+import Button from "./Button";
+import { scrollToSection } from "@/app/lib/scrollToSection";
+import { TabType } from "./EmailCapture";
 
-const items = [
+const audiencePaths = [
   {
-    Icon: Bot,
-    title: "For Learners",
-    desc: "Learn by talking with agentic tutors that adapt to your pace, learning style, and progress over time - not static course videos.",
-    highlights: [
-      "Buy tokens to chat with tutors",
-      "Tutors that evolve with you",
-      "On-chain assets at milestones",
+    eyebrow: "For Creators",
+    title: (
+      <>
+        Turn your expertise
+        <br />
+        into a tutor that teaches at scale.
+      </>
+    ),
+    copy: "Upload your knowledge, define what learners should master, and publish an adaptive agentic tutor built from your expertise.",
+    cta: "Become a Founding Creator",
+    tab: "creator" as TabType,
+    accent: "creator",
+    Icon: UserRound,
+    SupportIcon: UploadCloud,
+    bullets: [
+      "Encode real expertise and teaching style",
+      "Generate adaptive learning paths",
+      "Review, refine, and publish",
+      "Reach learners at scale",
     ],
   },
   {
-    Icon: Cpu,
-    title: "For Creators",
-    desc: "Upload your knowledge, build an agentic tutor from your expertise, and reach learners who pay with tokens to learn from your agent.",
-    highlights: [
-      "Encode your expertise",
-      "Publish agentic tutors",
-      "Earn from token usage",
+    eyebrow: "For Learners",
+    title: (
+      <>
+        Learn from expert-built
+        <br />
+        AI tutors that adapt to you.
+      </>
+    ),
+    copy: "Get personalized guidance that adjusts to your pace, goals, weaknesses, and learning style - with progress based on mastery.",
+    cta: "Get Early Access",
+    tab: "learner" as TabType,
+    accent: "student",
+    Icon: GraduationCap,
+    SupportIcon: BookOpenCheck,
+    bullets: [
+      "Learn at your own pace",
+      "Personalized explanations and practice",
+      "Mastery checkpoints",
+      "Track milestones and progress",
     ],
   },
 ];
 
-export default function WhatYoullBuild() {
+export default function WhatYoullBuild({
+  setActiveTab,
+}: {
+  setActiveTab: (tab: TabType) => void;
+}) {
   return (
-    <section className={styles.whatYoullBuild}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.sectionTag}>How It Works</span>
-          <h2>Learn and Teach Through Agentic Tutors</h2>
-          <p>
-            Cognios connects creators who turn knowledge into agents with
-            learners who grow through adaptive, token-powered tutoring - and
-            verifiable on-chain rewards along the way.
-          </p>
-        </div>
+    <section
+      className={styles.audienceSection}
+      aria-labelledby="audience-heading"
+    >
+      <div className={styles.sectionHeading}>
+        <p className={styles.sectionLabel}>Built for both sides</p>
+        <h2 id="audience-heading">
+          Creators teach at scale. Learners progress with guidance.
+        </h2>
+        <p className={styles.sectionIntro}>
+          Cognios connects expert knowledge with adaptive learning journeys -
+          so creators can teach at scale and learners can progress with
+          practice, support, and proof.
+        </p>
+      </div>
 
-        <div className={styles.grid}>
-          {items.map((item) => (
-            <div key={item.title} className={styles.card}>
-              <div className={styles.icon}>
-                <item.Icon size={28} />
-              </div>
-              <span>{item.title}</span>
-              <p>{item.desc}</p>
-              <ul className={styles.valueList}>
-                {item.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
+      <div className={styles.audienceGrid}>
+        {audiencePaths.map(({ Icon, SupportIcon, ...path }) => (
+          <article
+            className={`${styles.audienceCard} ${styles[path.accent]}`}
+            key={path.eyebrow}
+          >
+            <div className={styles.audienceCopy}>
+              <p className={styles.audienceEyebrow}>{path.eyebrow}</p>
+              <h3>{path.title}</h3>
+              <p>{path.copy}</p>
+              <ul>
+                {path.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
                 ))}
               </ul>
+              <Button
+                variant="secondary"
+                size="medium"
+                onClick={() => {
+                  scrollToSection("email-capture");
+                  setActiveTab(path.tab);
+                }}
+              >
+                {path.cta}
+              </Button>
             </div>
-          ))}
-        </div>
+
+            <div className={styles.audienceVisual} aria-hidden="true">
+              <div className={styles.audienceOrb}>
+                <Icon size={64} strokeWidth={1.35} />
+              </div>
+              <div className={styles.audienceMiniOrb}>
+                <SupportIcon size={28} strokeWidth={1.7} />
+              </div>
+              <div className={styles.audienceSpark}>
+                <Sparkles size={22} strokeWidth={1.7} />
+              </div>
+              <div className={styles.audiencePlate} />
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

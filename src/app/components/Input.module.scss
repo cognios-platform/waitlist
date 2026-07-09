@@ -27,8 +27,8 @@
   align-items: center;
   width: 100%;
   border: $border-1px-solid;
-  border-radius: 8px;
-  background: $color-card-bg;
+  border-radius: 12px;
+  background: rgba(7, 17, 32, 0.72);
   transition: all 0.2s ease;
 
   &:focus-within {

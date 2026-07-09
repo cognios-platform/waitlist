@@ -28,8 +28,8 @@ function validateCategory(value: string): boolean | null {
 export type TabType = "learner" | "creator";
 
 export const TABS: { id: TabType; label: string }[] = [
-  { id: "learner", label: "I want to learn with agentic tutors" },
-  { id: "creator", label: "I want to build and publish agents" },
+  { id: "learner", label: "I want to learn with adaptive tutors" },
+  { id: "creator", label: "I want to build and publish tutors" },
 ];
 
 export default function EmailCapture({
@@ -120,12 +120,12 @@ export default function EmailCapture({
       className={`${homeStyles.emailCapture} ${styles.emailCapture}`}
     >
       <div className={homeStyles.container}>
-        <div className={homeStyles.header}>
-          <span className={homeStyles.sectionTag}>Early Access</span>
+        <div className={homeStyles.sectionHeading}>
+          <span className={homeStyles.sectionLabel}>Early Access</span>
           <h2>Join the Cognios waitlist</h2>
-          <p>
-            Sign up for early access to agentic tutors, token-powered learning,
-            and on-chain milestone rewards.
+          <p className={homeStyles.sectionIntro}>
+            Get early access to adaptive AI tutors built from real expertise -
+            personalized guidance, mastery checkpoints, and verifiable progress.
           </p>
         </div>
 
@@ -195,8 +195,8 @@ export default function EmailCapture({
           >
             <p className={styles.description}>
               {activeTab === "learner"
-                ? "Be among the first to learn with agentic tutors that adapt to your pace and style - powered by tokens and rewarded on-chain at milestones."
-                : "Be among the first creators to turn your expertise into agentic tutors and reach learners through token-powered sessions."}
+                ? "Be among the first to learn with expert-built AI tutors that adapt to your pace, goals, and learning style."
+                : "Be among the first creators to turn your expertise into adaptive agentic tutors that teach at scale."}
             </p>
 
             <Input
@@ -235,7 +235,7 @@ export default function EmailCapture({
               id="waitlist-category"
               type="text"
               label="What are you interested in?"
-              placeholder="e.g. AI agents, DeFi, smart contracts"
+              placeholder="e.g. AI tutoring, product design, data science"
               value={formData.category}
               onChange={(e) => {
                 const category = sanitizeCategoryInput(e.target.value);
