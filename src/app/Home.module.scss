@@ -74,7 +74,8 @@
 .progressSection,
 .emailCapture,
 .finalCtaSection {
-  margin-inline: auto;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .sectionHeading {
@@ -893,7 +894,11 @@
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--home-cyan), var(--home-purple));
+        background: linear-gradient(
+          135deg,
+          var(--home-cyan),
+          var(--home-purple)
+        );
         box-shadow: 0 0 10px rgba(28, 185, 199, 0.4);
       }
     }
@@ -975,11 +980,7 @@
   width: 70%;
   height: 14%;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(28, 185, 199, 0.2),
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(28, 185, 199, 0.2), transparent 70%);
   filter: blur(8px);
 }
 
@@ -1067,10 +1068,8 @@
 .finalCtaSection {
   position: relative;
   overflow: hidden;
-  margin-top: clamp(24px, 4vw, 48px);
-  margin-bottom: clamp(48px, 7vw, 96px);
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-bottom: 60px;
+  margin-top: 60px;
   padding: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 48px);
   border: 1px solid var(--home-border);
   border-radius: var(--home-radius-xl);
@@ -1093,6 +1092,11 @@
     0 0 110px rgba(139, 92, 246, 0.09);
   backdrop-filter: blur(20px);
   text-align: center;
+
+  @include mobile {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 .finalCtaGlow {
